@@ -158,9 +158,15 @@ class CBBaseColletionView: UIView,UICollectionViewDelegate,UICollectionViewDeleg
     
     
     
+
+ //MARK:暴露在外面的方法
     
-    
-    
-    
-    
+    /**
+    *  @author 黄俊杰, 15-07-10 18:07:46
+    *
+    *  @brief  暴露在外面的方法
+    */
+    func setCollectionViewBackgroundColor(color:UIColor){
+        self.colletionView.backgroundColor = color
+    }
 }

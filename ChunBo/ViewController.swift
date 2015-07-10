@@ -7,7 +7,8 @@
 
 import UIKit
 import Alamofire
-
+import SnapKit
+import ObjectMapper
 
 class ViewController: UIViewController,CBBaseColletionViewDelegate{
     
@@ -30,8 +31,9 @@ class ViewController: UIViewController,CBBaseColletionViewDelegate{
             
             for (indexlist ,objlist ) in enumerate(list){
                 
-                var  OneProductModel : OneProductCollectionViewCellModel = OneProductCollectionViewCellModel()
-                
+//                var  OneProductModel : OneProductCollectionViewCellModel = OneProductCollectionViewCellModel()
+                var  OneProductModel : OneProductCollectionViewCellModel = Mapper<OneProductCollectionViewCellModel>().map(objlist)!
+
                 OneProductModel.cellIdentifier = "OneProductCollectionViewCell"
                 OneProductModel.cellEdgeInstes = UIEdgeInsetsMake(10, 10, 10, 10)
                 OneProductModel.cellSize = CGSizeMake(145*percent, 190*percent)
@@ -74,10 +76,12 @@ class ViewController: UIViewController,CBBaseColletionViewDelegate{
         self.creatTheUI()
     }
     
+    
     func creatTheUI(){
         
         collection.delegate = self
         self.view.addSubview(collection)
+        collection.setCollectionViewBackgroundColor(RGBA(245, 247, 250, 1))
         collection.CBCollectionViewRegisterClass(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "ViewCell")
         collection.CBCollectionViewRegisterClass(OneProductCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "OneProductCollectionViewCell")
         
@@ -109,20 +113,9 @@ class ViewController: UIViewController,CBBaseColletionViewDelegate{
             
         }else{
             let identify:String = "ViewCell"
-            // 获取设计的单元格，不需要再动态添加界面元素
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(
                 identify, forIndexPath: indexPath) as! UICollectionViewCell
             
-            // 图片上面显示课程名称，居中显示
-            let lbl = UILabel(frame:CGRectMake(0,5,cell.bounds.size.width,20))
-            lbl.textAlignment = NSTextAlignment.Center
-            lbl.text = "name"
-            cell.addSubview(lbl)
-            lbl.backgroundColor = UIColor.greenColor()
-            lbl.snp_makeConstraints { (make) -> Void in
-                //            make.width.height.equalTo(100)
-//                make.top.equalTo(cell.snp_bottom).offset(10)
-            }
             cell.backgroundColor = UIColor.yellowColor()
             return cell
         }

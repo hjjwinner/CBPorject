@@ -18,3 +18,15 @@
 #define COCOAPODS_VERSION_MINOR_KFSwiftImageLoader 2
 #define COCOAPODS_VERSION_PATCH_KFSwiftImageLoader 0
 
+// ObjectMapper
+#define COCOAPODS_POD_AVAILABLE_ObjectMapper
+#define COCOAPODS_VERSION_MAJOR_ObjectMapper 0
+#define COCOAPODS_VERSION_MINOR_ObjectMapper 12
+#define COCOAPODS_VERSION_PATCH_ObjectMapper 0
+
+// SnapKit
+#define COCOAPODS_POD_AVAILABLE_SnapKit
+#define COCOAPODS_VERSION_MAJOR_SnapKit 0
+#define COCOAPODS_VERSION_MINOR_SnapKit 12
+#define COCOAPODS_VERSION_PATCH_SnapKit 0
+
