@@ -1,0 +1,13 @@
+PODS:
+  - Alamofire (1.2.3)
+  - KFSwiftImageLoader (1.2)
+
+DEPENDENCIES:
+  - Alamofire (~> 1.2)
+  - KFSwiftImageLoader (~> 1.2)
+
+SPEC CHECKSUMS:
+  Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
+  KFSwiftImageLoader: dba6081682622f392b277a6507d4f6d905a95c01
+
+COCOAPODS: 0.37.2

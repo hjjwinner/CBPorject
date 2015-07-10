@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Fgc-3b-qtF">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Item 2-->
+        <scene sceneID="ucG-tu-ffA">
+            <objects>
+                <viewController id="LG5-6e-glB" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eW2-Ie-hli"/>
+                        <viewControllerLayoutGuide type="bottom" id="mmI-Jx-WP3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9Z7-7J-eIu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="3Gw-1I-bdf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="clh-Oz-oZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="111" y="918"/>
+        </scene>
+        <!--首页-->
+        <scene sceneID="dEa-gB-OZp">
+            <objects>
+                <viewController id="7zs-8R-zh2" userLabel="首页" customClass="ViewController" customModule="ChunBo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pr6-vk-IUE"/>
+                        <viewControllerLayoutGuide type="bottom" id="qZg-p9-RrU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WW7-5w-lUe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" image="home_tabbar_home" id="bhy-r9-r7w"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sYr-FJ-rg0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="112" y="256"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="UUe-wO-W5v">
+            <objects>
+                <tabBarController id="Fgc-3b-qtF" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="7wj-ef-wel">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="7zs-8R-zh2" kind="relationship" relationship="viewControllers" id="vR8-83-Wba"/>
+                        <segue destination="LG5-6e-glB" kind="relationship" relationship="viewControllers" id="vxQ-Ev-f56"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4lk-Xk-zZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-706" y="588"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="home_tabbar_home" width="60" height="50"/>
+    </resources>
+</document>
