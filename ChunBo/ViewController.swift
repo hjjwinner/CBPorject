@@ -31,7 +31,6 @@ class ViewController: UIViewController,CBBaseColletionViewDelegate{
             
             for (indexlist ,objlist ) in enumerate(list){
                 
-//                var  OneProductModel : OneProductCollectionViewCellModel = OneProductCollectionViewCellModel()
                 var  OneProductModel : OneProductCollectionViewCellModel = Mapper<OneProductCollectionViewCellModel>().map(objlist)!
 
                 OneProductModel.cellIdentifier = "OneProductCollectionViewCell"
@@ -54,7 +53,7 @@ class ViewController: UIViewController,CBBaseColletionViewDelegate{
         // Do any additional setup after loading the view, typically from a nib.
         
         Alamofire.request(.POST, "http://api.chunbo.com/Home/newindex", parameters: nil).responseJSON{(request, response, JSON, error) in
-            print("\(JSON)");
+//            print("\(JSON)");
             var homeData :NSMutableDictionary = self.buildData(JSON as! NSDictionary) as! NSMutableDictionary
             self.collection.collectionItemDict = homeData
             
@@ -85,15 +84,6 @@ class ViewController: UIViewController,CBBaseColletionViewDelegate{
         collection.CBCollectionViewRegisterClass(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "ViewCell")
         collection.CBCollectionViewRegisterClass(OneProductCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "OneProductCollectionViewCell")
         
-        var array:NSArray = ["aa","BB"]
-        for (index , value ) in enumerate(array){
-            print("\(value)-\(index)")
-        }
-        var lertter = Set<Character>()
-        lertter.insert("a")
-        print("\(lertter)")
-        lertter.insert("a")
-        print("\(lertter)")
         
     }
     

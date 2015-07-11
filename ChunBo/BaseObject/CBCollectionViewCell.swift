@@ -12,7 +12,11 @@ import SnapKit
 class CBCollectionViewCell: UICollectionViewCell {
 
 }
-
+/**
+*  @author 黄俊杰, 15-07-11 01:07:50
+*
+*  @brief  单品页Cell
+*/
 class OneProductCollectionViewCell: CBCollectionViewCell {
     
     var imageView:UIImageView?
@@ -23,6 +27,8 @@ class OneProductCollectionViewCell: CBCollectionViewCell {
     var originalPrice:CustomLineLabel?
     var placeHold_back:UIImageView?
     var carBtn :cartByButton?
+    var imageSale:UIImageView?
+    var givenImage:UIImageView?
     
     
     var cellData:OneProductCollectionViewCellModel?{
@@ -77,11 +83,22 @@ class OneProductCollectionViewCell: CBCollectionViewCell {
         self.originalPrice = CustomLineLabel()
         self.addSubview(originalPrice!)
         
-        self.carBtn = cartByButton.ShoppingCart()
+        self.carBtn = cartByButton.ShoppingCart(CGSizeMake(24, 24))
         self.addSubview(carBtn!)
+        
+        self.imageSale = UIImageView(frame: CGRectMake(10, 10, 60, 20))
+        self.imageSale?.hidden = true
+        self.addSubview(imageSale!)
+        
+        self.givenImage = UIImageView(frame: CGRectMake(10, 10, 12, 12))
+        self.givenImage?.hidden = true
+        self.addSubview(givenImage!)
     }
-    
+
     override func layoutSubviews() {
+        
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = RGBA(235, 238, 242, 1).CGColor
         
         imageView?.backgroundColor = UIColor.grayColor()
         self.imageView!.snp_makeConstraints({ (make) -> Void in
@@ -133,8 +150,8 @@ class OneProductCollectionViewCell: CBCollectionViewCell {
         
         
         self.price?.font = UIFont.systemFontOfSize(14)
-        self.price?.textColor = UIColor.redColor()
-        self.price?.text = cellData?.chunboPrice
+        self.price?.textColor = cellData!.priceColor() as UIColor
+        self.price?.text = cellData!.priceValue() as String
         self.price?.sizeToFitSize()
         self.price?.snp_makeConstraints({ (make) -> Void in
             make.height.equalTo(15)
@@ -149,23 +166,39 @@ class OneProductCollectionViewCell: CBCollectionViewCell {
             make.left.equalTo(self.price!.snp_right).offset(3)
             make.centerY.equalTo(self.price!.snp_centerY).offset(0)
         })
-        self.originalPrice?.text = cellData?.marketPrice
+        self.originalPrice?.text = cellData!.originalPriceValue() as String
+        var originalPriceStr :NSString = cellData!.originalPriceValue() as String
+        if (originalPriceStr.intValue == 0){
+            self.originalPrice?.hidden = true
+        }
         self.originalPrice?.textAlignment = NSTextAlignment.Left
         self.originalPrice?.font = UIFont.systemFontOfSize(11)
         self.originalPrice?.textColor = RGBA(153, 153, 153, 1)
         
-        self.layer.borderWidth = 0.5
-        self.layer.borderColor = RGBA(235, 238, 242, 1).CGColor
-        
-        
         self.carBtn?.snp_makeConstraints({ (make) -> Void in
             make.width.height.equalTo(24*percent)
-            make.right.lessThanOrEqualTo(self.snp_right).offset(speasd)
-            make.bottom.equalTo(self.snp_bottom).offset(speasd)
+            make.right.lessThanOrEqualTo(self.snp_right).offset(-speasd)
+            make.bottom.equalTo(self.snp_bottom).offset(-speasd)
             
         })
+        self.carBtn?.addTarget(self, action: "carBtnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        
+        if cellData?.saleImageWithImage() as! NSObject != NSNull(){
+            self.imageSale?.image = cellData?.saleImageWithImage() as? UIImage
+            self.imageSale?.hidden = false
+        }else{
+            self.imageSale?.hidden = true
+        }
+        
         
     }
+    
+    
+    func carBtnClick(btn : UIButton){
+        
+    }
+    
     
 }
 
