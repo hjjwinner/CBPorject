@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.rootViewController = tabar;
         
+        CBUser().getDefulUsetSessionId()
         
         return true
     }

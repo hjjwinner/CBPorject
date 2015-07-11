@@ -190,7 +190,7 @@ class OneProductCollectionViewCell: CBCollectionViewCell {
         }else{
             self.imageSale?.hidden = true
         }
-        
+
         
     }
     

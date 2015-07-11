@@ -52,25 +52,16 @@ class ViewController: UIViewController,CBBaseColletionViewDelegate{
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        Alamofire.request(.POST, "http://api.chunbo.com/Home/newindex", parameters: nil).responseJSON{(request, response, JSON, error) in
-//            print("\(JSON)");
-            var homeData :NSMutableDictionary = self.buildData(JSON as! NSDictionary) as! NSMutableDictionary
+//        Alamofire.request(.POST, "http://api.chunbo.com/Home/newindex", parameters: nil).responseJSON{(request, response, JSON, error) in
+//            var homeData :NSMutableDictionary = self.buildData(JSON as! NSDictionary) as! NSMutableDictionary
+//            self.collection.collectionItemDict = homeData
+//
+//        }
+        
+        CBAPIHelperHome.shareInstance.api_newindex_withParams([:], completion: { (finished, error) -> Void in
+            var homeData :NSMutableDictionary = self.buildData(finished as! NSDictionary) as! NSMutableDictionary
             self.collection.collectionItemDict = homeData
-            
-        }
-        
-//        Alamofire.request(.POST, "http://httpbin.org/post", parameters: ["add":"aff"], encoding: .JSON(options: nil))
-//            .responseJSON {(request, response, JSON, error) in
-//                println(JSON)
-//        }
-        
-//        Alamofire.request(.GET,"http://api.chunbo.com/Home/newindex",parameters: ["foo": "bar"]).responseString{(request, response, string, error) in
-//            
-////            NSDictionary * dict = [NSJSONSerialization .JSONObjectWithData(string, options: NSJSONReadingMutableLeaves, error: nil)];
-//            
-//        print("\(string)")
-//            print("\(response)")
-//        }
+        })
 
         self.creatTheUI()
     }

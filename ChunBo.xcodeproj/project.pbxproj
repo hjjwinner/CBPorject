@@ -11,10 +11,13 @@
 		E12138DE1B4E4A3200731B6E /* CBCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12138DD1B4E4A3200731B6E /* CBCollectionViewCell.swift */; };
 		E12138E01B4E4B0A00731B6E /* CBCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12138DF1B4E4B0A00731B6E /* CBCollectionViewCellModel.swift */; };
 		E179ED401B4CBFF6003949EF /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E179ED3F1B4CBFF6003949EF /* Constant.swift */; };
+		E184FCDB1B517804005805A0 /* CBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E184FCDA1B517804005805A0 /* CBUser.swift */; };
 		E19DCB5D1B452AB6000C6B9B /* CBBaseColletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19DCB5C1B452AB6000C6B9B /* CBBaseColletionView.swift */; };
 		E1D660CA1B4FB7AF00B312FE /* CustomLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D660C91B4FB7AF00B312FE /* CustomLineLabel.swift */; };
 		E1D660CC1B4FD1E300B312FE /* CBextension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D660CB1B4FD1E300B312FE /* CBextension.swift */; };
 		E1D660CF1B4FDDF300B312FE /* cartByButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D660CE1B4FDDF300B312FE /* cartByButton.swift */; };
+		E1E6455F1B50E7D20011EB98 /* BaseAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E6455E1B50E7D20011EB98 /* BaseAPIHelper.swift */; };
+		E1E645611B50F1D30011EB98 /* CBAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E645601B50F1D30011EB98 /* CBAPIHelper.swift */; };
 		E1E86DCC1B44DD5100B4125C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E86DCB1B44DD5100B4125C /* AppDelegate.swift */; };
 		E1E86DCE1B44DD5100B4125C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E86DCD1B44DD5100B4125C /* ViewController.swift */; };
 		E1E86DD11B44DD5100B4125C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1E86DCF1B44DD5100B4125C /* Main.storyboard */; };
@@ -41,10 +44,13 @@
 		E12138DD1B4E4A3200731B6E /* CBCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CBCollectionViewCell.swift; path = BaseObject/CBCollectionViewCell.swift; sourceTree = "<group>"; };
 		E12138DF1B4E4B0A00731B6E /* CBCollectionViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CBCollectionViewCellModel.swift; path = BaseObject/CBCollectionViewCellModel.swift; sourceTree = "<group>"; };
 		E179ED3F1B4CBFF6003949EF /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = BaseObject/Constant.swift; sourceTree = "<group>"; };
+		E184FCDA1B517804005805A0 /* CBUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBUser.swift; sourceTree = "<group>"; };
 		E19DCB5C1B452AB6000C6B9B /* CBBaseColletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CBBaseColletionView.swift; path = BaseObject/CBBaseColletionView.swift; sourceTree = "<group>"; };
 		E1D660C91B4FB7AF00B312FE /* CustomLineLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLineLabel.swift; sourceTree = "<group>"; };
 		E1D660CB1B4FD1E300B312FE /* CBextension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CBextension.swift; path = BaseObject/CBextension.swift; sourceTree = "<group>"; };
 		E1D660CE1B4FDDF300B312FE /* cartByButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cartByButton.swift; sourceTree = "<group>"; };
+		E1E6455E1B50E7D20011EB98 /* BaseAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseAPIHelper.swift; path = BaseObject/BaseAPIHelper.swift; sourceTree = "<group>"; };
+		E1E645601B50F1D30011EB98 /* CBAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CBAPIHelper.swift; path = API/CBAPIHelper.swift; sourceTree = "<group>"; };
 		E1E86DC61B44DD5100B4125C /* ChunBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChunBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E86DCA1B44DD5100B4125C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1E86DCB1B44DD5100B4125C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,7 +119,10 @@
 		E1D660CD1B4FD1EA00B312FE /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				E1E86DEB1B44DE3600B4125C /* CBTabBarController.swift */,
 				E1D660CB1B4FD1E300B312FE /* CBextension.swift */,
+				E1E6455E1B50E7D20011EB98 /* BaseAPIHelper.swift */,
+				E1E645601B50F1D30011EB98 /* CBAPIHelper.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -146,7 +155,7 @@
 				E19DCB5C1B452AB6000C6B9B /* CBBaseColletionView.swift */,
 				E12138DF1B4E4B0A00731B6E /* CBCollectionViewCellModel.swift */,
 				E12138DD1B4E4A3200731B6E /* CBCollectionViewCell.swift */,
-				E1E86DEB1B44DE3600B4125C /* CBTabBarController.swift */,
+				E184FCDA1B517804005805A0 /* CBUser.swift */,
 				E179ED3F1B4CBFF6003949EF /* Constant.swift */,
 				E1D660CD1B4FD1EA00B312FE /* Base */,
 				E1D660C81B4FB78400B312FE /* Lib */,
@@ -339,12 +348,15 @@
 				E19DCB5D1B452AB6000C6B9B /* CBBaseColletionView.swift in Sources */,
 				E1E86DCE1B44DD5100B4125C /* ViewController.swift in Sources */,
 				E12138E01B4E4B0A00731B6E /* CBCollectionViewCellModel.swift in Sources */,
+				E1E6455F1B50E7D20011EB98 /* BaseAPIHelper.swift in Sources */,
 				E1D660CC1B4FD1E300B312FE /* CBextension.swift in Sources */,
 				E1D660CA1B4FB7AF00B312FE /* CustomLineLabel.swift in Sources */,
 				E179ED401B4CBFF6003949EF /* Constant.swift in Sources */,
 				E1E86DCC1B44DD5100B4125C /* AppDelegate.swift in Sources */,
+				E184FCDB1B517804005805A0 /* CBUser.swift in Sources */,
 				E1E86DEC1B44DE3600B4125C /* CBTabBarController.swift in Sources */,
 				E12138DE1B4E4A3200731B6E /* CBCollectionViewCell.swift in Sources */,
+				E1E645611B50F1D30011EB98 /* CBAPIHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,7 +434,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -461,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -475,6 +487,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ChunBo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -486,6 +499,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ChunBo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

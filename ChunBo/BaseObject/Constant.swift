@@ -11,8 +11,6 @@ import UIKit
 class Constant: NSObject {
     
 }
-
-
     /// 宽
     let ScreenWidth = UIScreen.mainScreen().bounds.size.width
     /// 高
@@ -35,3 +33,10 @@ func RGBA (r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) ->UIColor {
 }
 
 
+/**
+*  @author 黄俊杰, 15-07-12 00:07:14
+*
+*  @brief  宏定义Key
+*/
+
+    let sessionID = "session_id"
