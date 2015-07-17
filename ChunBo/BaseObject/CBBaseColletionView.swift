@@ -13,6 +13,9 @@ protocol CBBaseColletionViewDelegate :NSObjectProtocol {
     
     func CBcollectionView(collectionView:UICollectionView , indexPath:NSIndexPath , data:NSDictionary) -> UICollectionViewCell
     
+    func CBcollectionViewdidSelec(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath ,withData data: CBCollectionViewCellModel) -> Void
+
+    
 }
 
 class CBBaseColletionView: UIView,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout ,UICollectionViewDataSource{
@@ -36,6 +39,8 @@ class CBBaseColletionView: UIView,UICollectionViewDelegate,UICollectionViewDeleg
 
     }
     
+    var clickCompletion :((collectionView: UICollectionView, indexPath: NSIndexPath ,model : [NSObject: AnyObject]?) -> Void)?
+    
     var colletionView :UICollectionView!
     
     var delegate: CBBaseColletionViewDelegate?
@@ -43,8 +48,13 @@ class CBBaseColletionView: UIView,UICollectionViewDelegate,UICollectionViewDeleg
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.layoutCollectionView()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "relodaData", name: CBCollectionViewReload, object: nil)
     }
 
+    deinit{
+       NSNotificationCenter.defaultCenter().removeObserver(self, name: CBCollectionViewReload, object: nil)
+    }
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -123,6 +133,13 @@ class CBBaseColletionView: UIView,UICollectionViewDelegate,UICollectionViewDeleg
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
+//            var model: AnyObject? = self.collectionItemDict.objectForKey("\(indexPath.section)")?.objectAtIndex(indexPath.row)
+        let model : CBCollectionViewCellModel = self.collectionItemDict.objectForKey("\(indexPath.section)")?.objectAtIndex(indexPath.row) as! CBCollectionViewCellModel
+
+            if self.delegate != nil && delegate?.respondsToSelector("CBcollectionViewdidSelec") != nil {
+                delegate?.CBcollectionViewdidSelec(collectionView, didSelectItemAtIndexPath: indexPath, withData: model )
+            }
+            
     }
     
     

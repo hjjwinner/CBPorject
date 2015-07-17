@@ -154,7 +154,6 @@ class OneProductCollectionViewCell: CBCollectionViewCell {
         self.price?.text = cellData!.priceValue() as String
         self.price?.sizeToFitSize()
         self.price?.snp_makeConstraints({ (make) -> Void in
-            make.height.equalTo(15)
             make.top.equalTo(self.numberLabel!.snp_bottom).offset(speasd)
             make.left.equalTo(self.numberLabel!.snp_left).offset(0)
         })
@@ -182,6 +181,9 @@ class OneProductCollectionViewCell: CBCollectionViewCell {
             
         })
         self.carBtn?.addTarget(self, action: "carBtnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+        let productId = self.cellData?.productId.toInt()
+        
+        self.carBtn?.remindNumber?.badgeValue = "\(CBUser.shareInstance.getCommodityNumberWithProductId(productId!))"
         
         
         if cellData?.saleImageWithImage() as! NSObject != NSNull(){
@@ -190,15 +192,184 @@ class OneProductCollectionViewCell: CBCollectionViewCell {
         }else{
             self.imageSale?.hidden = true
         }
-
         
     }
     
     
     func carBtnClick(btn : UIButton){
         
+        self.carBtn?.imageRingBeRing()
+        
+        var session_id : String  = NSUserDefaults.standardUserDefaults().stringForKey(sessionID)!
+        
+        var params : NSDictionary = [
+            "product_id":cellData!.productId as String,
+            "sku_num":"1",
+            "session_id":session_id as String
+        ]
+        
+        CBAPIHelperCart.shareInstance.api_addToCart_withParams(params, completion: { (finished, error) -> Void in
+            
+            CBUser.shareInstance.getUserCartList({ () -> Void in
+                self.layoutSubviews()
+            })
+
+        })
     }
     
     
 }
 
+
+class TopBannerCell: CBCollectionViewCell {
+    
+    var TitleImage : UIImageView?
+    var titleLabel : UILabel?
+    var letLine : UIImageView?
+    var rightLine : UIImageView?
+    var cellData : TopBannerCellModel?{
+        willSet(newValue){
+            self.cellData = newValue
+            layoutSubviews()
+        }
+    }
+    
+    let margin = 12
+
+    
+    convenience  required  init(coder aDecoder: NSCoder) {
+        
+        self.init(frame:CGRectMake(0, 0, 0 , 0))
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.frame = CGRectMake(0, 0, 300*percent, 174*percent)
+        self.backgroundColor = UIColor.whiteColor()
+        self.creatTheUI()
+        
+    }
+    
+    
+    func creatTheUI(){
+        
+        self.titleLabel = UILabel()
+        self.addSubview(titleLabel!)
+        
+        TitleImage = UIImageView()
+        self.addSubview(TitleImage!)
+        
+        self.letLine = UIImageView()
+        self.addSubview(letLine!)
+        
+        self.rightLine = UIImageView()
+        self.addSubview(rightLine!)
+        
+    }
+    
+    
+    override func layoutSubviews() {
+  
+        self.titleLabel?.text = cellData?.name
+        self.titleLabel?.sizeToFitSize()
+        self.titleLabel?.snp_makeConstraints({ (make) -> Void in
+            make.centerX.equalTo(self.snp_centerX)
+            make.top.equalTo(self.snp_top).offset(5)
+        })
+        
+        self.letLine?.backgroundColor = RGBA(153, 153, 153, 1)
+        self.letLine?.snp_makeConstraints({ (make) -> Void in
+            make.width.equalTo(40)
+            make.height.equalTo(1)
+            make.centerY.equalTo(self.titleLabel!.snp_centerY)
+            make.right.equalTo(self.titleLabel!.snp_left).offset(-5)
+        })
+        
+        
+        self.rightLine?.backgroundColor = RGBA(153, 153, 153, 1)
+        self.rightLine?.snp_makeConstraints({ (make) -> Void in
+            make.width.equalTo(40)
+            make.height.equalTo(1)
+            make.centerY.equalTo(self.titleLabel!.snp_centerY)
+            make.left.equalTo(self.titleLabel!.snp_right).offset(5)
+        })
+        
+        self.TitleImage?.snp_makeConstraints({ (make) -> Void in
+            make.width.equalTo(self.snp_width)
+            make.height.equalTo(139*percent)
+            make.top.equalTo(titleLabel!.snp_bottom).offset(10)
+            make.bottom.equalTo(self.snp_bottom)
+        })
+        
+        self.TitleImage?.loadImageFromURLString(cellData!.pic!, placeholderImage: nil, completion: { (finished, error) -> Void in
+            
+        })
+    }
+    
+}
+
+
+class SpecialCollectionViewCell: CBCollectionViewCell ,CirCleViewDelegate{
+    
+    var adView : AdView!
+    
+    var cellData : SpecialCollectionViewCellModel?{
+        willSet(newValue){
+            self.cellData = newValue
+        }
+        
+        didSet{
+            
+            for (index , obj) in enumerate(self.cellData!.adViewArray!){
+                
+                var specialModel : SpecialCollectionViewCellModel = obj as! SpecialCollectionViewCellModel
+                
+                self.cellDataArray.append(specialModel.pic_url!)
+            }
+            layoutSubviews()
+        }
+        
+    }
+    
+    var cellDataArray : [String]!{
+    
+        willSet(newValue){
+            self.cellDataArray = newValue
+        }
+        
+        didSet{
+            
+
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        creatTheUI()
+    }
+    
+    func creatTheUI(){
+        self.cellDataArray = [String]()
+        self.adView = AdView(frame: self.bounds)
+        self.adView.delegate = self
+        self.addSubview(adView)
+        
+    }
+    
+    
+    override func layoutSubviews() {
+        
+        self.adView.imageUrlArray = self.cellDataArray
+        
+    }
+    
+    func clickCurrentImage(currentIndxe: Int) {
+        
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+}

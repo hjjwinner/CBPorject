@@ -118,6 +118,13 @@ class CBAPIHelperCart: BaseAPIHelper {
             requestDataFromInterface("addToCart", withParams: params, whithcompletion: completion)
     }
     
+    func api_ChooseProductCart_withParams(params : NSDictionary,
+        completion:((finished: AnyObject!, error: NSError!) -> Void)
+        ){
+            requestDataFromInterface("ChooseProductCart", withParams: params, whithcompletion: completion)
+
+    }
+    
     
     override func baseURL()->NSString{
         return serverURL + "Cart/"

@@ -13,6 +13,7 @@
 		E179ED401B4CBFF6003949EF /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E179ED3F1B4CBFF6003949EF /* Constant.swift */; };
 		E184FCDB1B517804005805A0 /* CBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E184FCDA1B517804005805A0 /* CBUser.swift */; };
 		E19DCB5D1B452AB6000C6B9B /* CBBaseColletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19DCB5C1B452AB6000C6B9B /* CBBaseColletionView.swift */; };
+		E1A226391B56415E005BD18C /* AdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A226381B56415E005BD18C /* AdView.swift */; };
 		E1D660CA1B4FB7AF00B312FE /* CustomLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D660C91B4FB7AF00B312FE /* CustomLineLabel.swift */; };
 		E1D660CC1B4FD1E300B312FE /* CBextension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D660CB1B4FD1E300B312FE /* CBextension.swift */; };
 		E1D660CF1B4FDDF300B312FE /* cartByButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D660CE1B4FDDF300B312FE /* cartByButton.swift */; };
@@ -46,6 +47,7 @@
 		E179ED3F1B4CBFF6003949EF /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = BaseObject/Constant.swift; sourceTree = "<group>"; };
 		E184FCDA1B517804005805A0 /* CBUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBUser.swift; sourceTree = "<group>"; };
 		E19DCB5C1B452AB6000C6B9B /* CBBaseColletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CBBaseColletionView.swift; path = BaseObject/CBBaseColletionView.swift; sourceTree = "<group>"; };
+		E1A226381B56415E005BD18C /* AdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdView.swift; sourceTree = "<group>"; };
 		E1D660C91B4FB7AF00B312FE /* CustomLineLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLineLabel.swift; sourceTree = "<group>"; };
 		E1D660CB1B4FD1E300B312FE /* CBextension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CBextension.swift; path = BaseObject/CBextension.swift; sourceTree = "<group>"; };
 		E1D660CE1B4FDDF300B312FE /* cartByButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cartByButton.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			children = (
 				E1D660C91B4FB7AF00B312FE /* CustomLineLabel.swift */,
 				E1D660CE1B4FDDF300B312FE /* cartByButton.swift */,
+				E1A226381B56415E005BD18C /* AdView.swift */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				E1D660CF1B4FDDF300B312FE /* cartByButton.swift in Sources */,
 				E19DCB5D1B452AB6000C6B9B /* CBBaseColletionView.swift in Sources */,
 				E1E86DCE1B44DD5100B4125C /* ViewController.swift in Sources */,
+				E1A226391B56415E005BD18C /* AdView.swift in Sources */,
 				E12138E01B4E4B0A00731B6E /* CBCollectionViewCellModel.swift in Sources */,
 				E1E6455F1B50E7D20011EB98 /* BaseAPIHelper.swift in Sources */,
 				E1D660CC1B4FD1E300B312FE /* CBextension.swift in Sources */,

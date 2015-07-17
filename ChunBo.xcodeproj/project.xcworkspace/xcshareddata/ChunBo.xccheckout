@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E1424DE9-E157-42CD-B654-CA000C3A9DCD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ChunBo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C31AF715CDB709ED4D6E338CF072521D55753656</key>
+		<string>https://github.com/hjjwinner/CBPorject.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ChunBo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C31AF715CDB709ED4D6E338CF072521D55753656</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/hjjwinner/CBPorject.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C31AF715CDB709ED4D6E338CF072521D55753656</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C31AF715CDB709ED4D6E338CF072521D55753656</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CBporject</string>
+		</dict>
+	</array>
+</dict>
+</plist>

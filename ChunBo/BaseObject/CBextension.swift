@@ -32,7 +32,9 @@ extension UILabel {
     
     func sizeToFitSize() {
         let textString :NSString = self.text!
-        let stringsize : CGSize = textString.sizeWithAttributes(["NSFontAttributeName":self.font])
+//        let stringsize : CGSize = textString.sizeWithAttributes(["NSFontAttributeName":self.font])
+        
+        let stringsize : CGSize = textString.textSizeWithFont(self.font, constrainedToSize: self.frame.size)
 
         var rect:CGRect = self.frame
         rect.size = stringsize

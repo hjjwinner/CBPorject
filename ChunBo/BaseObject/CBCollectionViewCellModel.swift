@@ -185,3 +185,74 @@ class OneProductCollectionViewCellModel: CBCollectionViewCellModel {
     
     
 }
+
+class TopBannerCellModel: CBCollectionViewCellModel {
+    var cid : String?
+    var banner1 : String?
+    var priority : String?
+    var banner1_url : String?
+    var pic : String?
+    var link_type : String?
+    var name : String?
+    var model_url : String?
+    var pid : String?
+    var parent_id : String?
+    
+    required init?(_ map: Map) {
+        super.init()
+        
+        mapping(map)
+    }
+    
+    override func mapping(map: Map) {
+        super.mapping(map)
+        
+        cid	<- map["cid"]
+        banner1	<- map["banner1"]
+        priority	<- map["priority"]
+        banner1_url	<- map["banner1_url"]
+        pic	<- map["pic"]
+        link_type	<- map["link_type"]
+        name	<- map["name"]
+        model_url	<- map["model_url"]
+        pid	<- map["pid"]
+        parent_id	<- map["parent_id"]
+
+    }
+}
+
+
+class SpecialCollectionViewCellModel: CBCollectionViewCellModel {
+    
+    var name : String?
+    var pic_url : String?
+    var text : String?
+    var link : String?
+    var adflag : String?
+    var pid : String?
+    var link_type : String?
+    var adViewArray : NSArray?
+
+    required init?(_ map: Map) {
+        super.init()
+        
+        mapping(map)
+    }
+    
+    override func mapping(map: Map) {
+        super.mapping(map)
+        
+        name	<- map["name"]
+        pic_url	<- map["pic_url"]
+        text	<- map["text"]
+        link	<- map["link"]
+        adflag	<- map["adflag"]
+        pid	<- map["pid"]
+        link_type	<- map["link_type"]
+
+    }
+
+}
+
+
+

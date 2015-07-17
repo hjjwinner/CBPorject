@@ -40,3 +40,5 @@ func RGBA (r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) ->UIColor {
 */
 
     let sessionID = "session_id"
+
+    let CBCollectionViewReload = "CBCollectionViewReloadData"

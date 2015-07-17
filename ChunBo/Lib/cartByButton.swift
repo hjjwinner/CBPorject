@@ -47,6 +47,16 @@ class cartByButton: UIButton {
     
     func imageRingBeRing(){
         self.imageRing?.hidden = false
+        
+        var rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotationAnimation.toValue = NSNumber(double: M_PI * 2.0)
+        rotationAnimation.timingFunction = CAMediaTimingFunction(controlPoints:0.25, -0.8, 0.75, 1.85)
+        rotationAnimation.duration = 2
+        rotationAnimation.repeatCount = 1000
+        rotationAnimation.cumulative = false
+        rotationAnimation.removedOnCompletion = false
+        rotationAnimation.fillMode = kCAFillModeForwards
+        self.imageView?.layer.addAnimation(rotationAnimation, forKey: "Rotaation")
     }
     
     
@@ -59,7 +69,6 @@ class cartByButton: UIButton {
     
     
 }
-
 
 
 class RemindNumber: UIButton {
