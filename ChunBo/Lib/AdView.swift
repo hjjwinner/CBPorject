@@ -38,10 +38,12 @@ class AdView: UIView ,UIScrollViewDelegate{
     var imageUrlArray : [String]?{
         willSet(newValue){
             self.imageUrlArray = newValue
+            
         }
         
         didSet{
             if imageUrlArray != nil{
+                var imageArray :[UIImage!] = []
             for urlStr in self.imageUrlArray! {
                 var urlImage = NSURL(string: urlStr)
                 if urlImage == nil { break }
@@ -49,8 +51,9 @@ class AdView: UIView ,UIScrollViewDelegate{
                 if dataImage == nil { break }
                 var tempImage = UIImage(data: dataImage!)
                 if tempImage == nil { break }
-                imageNameArray.append(tempImage)
+                imageArray.append(tempImage)
             }
+                self.imageNameArray = imageArray
             }
         }
     }

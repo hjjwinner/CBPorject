@@ -44,6 +44,28 @@ class ViewController: UIViewController,CBBaseColletionViewDelegate{
             topIndex++
         }
         
+        let best_recommend :NSArray = data.objectForKey("data")?.objectForKey("best_recommend") as! NSArray
+        
+        var bestArray :NSMutableArray = []
+        
+        for (indexBest , objBest) in enumerate(best_recommend){
+            
+            var bestModel :bestRCollectionViewCellModel = Mapper<bestRCollectionViewCellModel>().map(objBest)!
+            bestArray.addObject(bestModel)
+        }
+        
+        if bestArray.count > 0{
+            
+            var bestModel :bestRCollectionViewCellModel = Mapper<bestRCollectionViewCellModel>().map(data)!
+            bestModel.cellIdentifier = "bestRCollectionViewCell"
+            bestModel.cellEdgeInstes = UIEdgeInsetsMake(10, 0, 0, 0)
+            bestModel.cellSize = CGSizeMake(ScreenWidth, 154*percent)
+            bestModel.bestArray = bestArray
+            
+            homeData.setObject([bestModel], forKey: "\(topIndex)")
+            topIndex++
+        }
+        
         let list_lc :NSArray = data.objectForKey("data")?.objectForKey("list_lc") as! NSArray
         
         for (index ,obj ) in enumerate(list_lc){
@@ -93,11 +115,6 @@ class ViewController: UIViewController,CBBaseColletionViewDelegate{
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-//        Alamofire.request(.POST, "http://api.chunbo.com/Home/newindex", parameters: nil).responseJSON{(request, response, JSON, error) in
-//            var homeData :NSMutableDictionary = self.buildData(JSON as! NSDictionary) as! NSMutableDictionary
-//            self.collection.collectionItemDict = homeData
-//
-//        }
         
         CBAPIHelperHome.shareInstance.api_newindex_withParams([:], completion: { (finished, error) -> Void in
             var homeData :NSMutableDictionary = self.buildData(finished as! NSDictionary) as! NSMutableDictionary
@@ -106,13 +123,6 @@ class ViewController: UIViewController,CBBaseColletionViewDelegate{
 
         self.creatTheUI()
         
-//        var array  = ["http://i3.chunboimg.com/group1/M00/02/5C/Cv4IbFWl1oOASz1JAAEEIVSwf9E590_640_240.jpg",
-//            "http://i3.chunboimg.com/group1/M00/02/5C/Cv4IdVWl05eAesTDAAFnaVsQT1I623_640_240.jpg",
-//            "http://i3.chunboimg.com/group1/M00/02/57/Cv4IdVWkkOCAbiDKAADM4PyYfoY521_640_240.jpg"
-//        ]
-//        var addview : AdView = AdView(frame: CGRectMake(0, 0, ScreenWidth, 300))
-//        addview.imageUrlArray = array as [String]
-//        self.view.addSubview(addview)
         
     }
     
@@ -126,6 +136,7 @@ class ViewController: UIViewController,CBBaseColletionViewDelegate{
         collection.CBCollectionViewRegisterClass(OneProductCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "OneProductCollectionViewCell")
         collection.CBCollectionViewRegisterClass(TopBannerCell.classForCoder(), forCellWithReuseIdentifier: "TopBannerCell")
         collection.CBCollectionViewRegisterClass(SpecialCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "SpecialCollectionViewCell")
+        collection.CBCollectionViewRegisterClass(bestRCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "bestRCollectionViewCell")
         
         
     }
@@ -156,7 +167,14 @@ class ViewController: UIViewController,CBBaseColletionViewDelegate{
             cell.cellData = model as? SpecialCollectionViewCellModel
             
             return cell
-
+            
+        }else if identifier.isEqualToString("bestRCollectionViewCell"){
+            
+            var cell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier as String, forIndexPath: indexPath) as!  bestRCollectionViewCell
+            cell.cellData = model as? bestRCollectionViewCellModel
+            
+            return cell
+            
         }else{
             let identify:String = "ViewCell"
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(

@@ -255,4 +255,114 @@ class SpecialCollectionViewCellModel: CBCollectionViewCellModel {
 }
 
 
+class bestRCollectionViewCellModel: CBCollectionViewCellModel {
+    
+    var product_id : String?
+    var name : String?
+    var subname : String?
+    var market_price : String?
+    var chunbo_price : String?
+    var specifications : String?
+    var image_id : String?
+    var url : String?
+    var shortname : String?
+    var sku_code : String?
+    var is_main : String?
+    var priority : String?
+    var content_id : String?
+    var buyer : String?
+    var start_time : String?
+    var end_time : String?
+    var creation_time : String?
+    var modification_time : String?
+    var is_enabled : String?
+    var pid : String?
+    var des : String?
+    var title : String?
+    var stock_count : String?
+    var promo_type : [Int]!{
+        willSet(newValue){
+            if newValue != nil{
+                self.promo_type = newValue
+            }
+        }
+        
+        didSet{
+            if promo_type != nil {
+                for (index,type) in enumerate(promo_type){
+                    if type == 3{
+                        self.promo_type3 = true
+                    }else if type == 4{
+                        self.promo_type4 = true
+                    }else if type == 6{
+                        self.promo_type6 = true
+                    }
+                }
+            }
+        }
+        
+    }
+    var promo_type3: Bool = false
+    var promo_type4: Bool = false
+    var promo_type6: Bool = false
+
+    
+    var promotion_price : String?
+    var sale_price : String?
+    var discount_price : String?
+    var bestArray :NSArray?
+    
+    required init?(_ map: Map) {
+        super.init()
+        
+        mapping(map)
+    }
+    
+    override func mapping(map: Map) {
+        super.mapping(map)
+        
+        product_id	<- map["product_id"]
+        name	<- map["name"]
+        subname	<- map["subname"]
+        market_price	<- map["market_price"]
+        chunbo_price	<- map["chunbo_price"]
+        specifications	<- map["specifications"]
+        image_id	<- map["image_id"]
+        url	<- map["url"]
+        shortname	<- map["shortname"]
+        sku_code	<- map["sku_code"]
+        is_main	<- map["is_main"]
+        priority	<- map["priority"]
+        content_id	<- map["content_id"]
+        buyer	<- map["buyer"]
+        start_time	<- map["start_time"]
+        end_time	<- map["end_time"]
+        creation_time	<- map["creation_time"]
+        modification_time	<- map["modification_time"]
+        is_enabled	<- map["is_enabled"]
+        pid	<- map["pid"]
+        des	<- map["des"]
+        title	<- map["title"]
+        stock_count	<- map["stock_count"]
+        promo_type	<- map["promo_type"]
+        promotion_price	<- map["promotion_price"]
+        sale_price	<- map["sale_price"]
+        discount_price	<- map["discount_price"]
+
+
+    }
+    
+    func priceColor()->UIColor{
+        var color = UIColor.redColor()
+        
+        if promo_type3 {
+            color = RGBA(231, 95, 68, 1)
+        }else{
+            color = RGBA(43, 188, 106, 1)
+        }
+        
+        return color
+    }
+}
+
 

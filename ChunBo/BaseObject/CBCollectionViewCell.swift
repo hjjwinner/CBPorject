@@ -245,7 +245,7 @@ class TopBannerCell: CBCollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.frame = CGRectMake(0, 0, 300*percent, 174*percent)
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.clearColor()
         self.creatTheUI()
         
     }
@@ -319,7 +319,7 @@ class SpecialCollectionViewCell: CBCollectionViewCell ,CirCleViewDelegate{
         }
         
         didSet{
-            
+            self.cellDataArray.removeAll(keepCapacity: true)
             for (index , obj) in enumerate(self.cellData!.adViewArray!){
                 
                 var specialModel : SpecialCollectionViewCellModel = obj as! SpecialCollectionViewCellModel
@@ -369,6 +369,179 @@ class SpecialCollectionViewCell: CBCollectionViewCell ,CirCleViewDelegate{
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+}
+
+class bestRCollectionViewCell: CBCollectionViewCell ,UIScrollViewDelegate{
+    
+    var bastTitleLabel:UILabel?
+    var scrlloView:UIScrollView?
+    var pageControl:UIPageControl?
+    var cellData:bestRCollectionViewCellModel?{
+        willSet(newValue){
+            self.cellData = newValue
+            creatTheUI()
+        }
+    }
+    
+    convenience  required  init(coder aDecoder: NSCoder) {
+        
+        self.init(frame:CGRectMake(0, 0, 0 , 0))
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.frame = CGRectMake(0, 0, ScreenWidth, 154*percent)
+        self.backgroundColor = UIColor.whiteColor()
+        self.clipsToBounds = true
+        
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = RGBA(235, 238, 242, 1).CGColor
+        
+        bastTitleLabel = UILabel(frame: CGRectMake(0, 0, 100, 20))
+        self.addSubview(bastTitleLabel!)
+        bastTitleLabel?.text = "好货推荐"
+        bastTitleLabel?.snp_makeConstraints({ (make) -> Void in
+            make.centerX.equalTo(self.snp_centerX)
+            make.top.equalTo(self.snp_top).offset(10)
+        })
+        
+        var line = UIView(frame: CGRectMake(0, 35, ScreenWidth, 1))
+        line.backgroundColor = RGBA(235, 238, 242, 1)
+        self.addSubview(line)
+        
+        self.pageControl = UIPageControl(frame: CGRectMake(0, 0, 20 * CGFloat(1), 20))
+        pageControl!.hidesForSinglePage = true
+        pageControl?.pageIndicatorTintColor = RGBA(135, 135, 135, 1)
+        pageControl?.currentPageIndicatorTintColor = RGBA(213, 213, 213, 1)
+        pageControl!.backgroundColor = UIColor.clearColor()
+        self.addSubview(self.pageControl!)
+        
+    }
+    
+    
+    
+    func creatTheUI(){
+        if (self.scrlloView != nil) {
+            self.scrlloView?.removeFromSuperview()
+        }
+        
+        self.scrlloView = UIScrollView(frame: CGRectMake(0, 40, ScreenWidth, self.frame.height - 40))
+        scrlloView?.delegate = self
+        self.addSubview(scrlloView!)
+
+        scrlloView?.pagingEnabled = true
+        scrlloView?.bounces = false
+        scrlloView?.showsHorizontalScrollIndicator = false
+        let array = cellData?.bestArray
+
+        for (index ,obj ) in enumerate(array!){
+            
+            var viewBest = creatTheBestView(obj as! bestRCollectionViewCellModel,index: index)
+   
+        }
+        
+        scrlloView?.contentSize = CGSizeMake(ScreenWidth*CGFloat(array!.count), scrlloView!.frame.size.height)
+        
+        
+        self.pageControl!.numberOfPages = array!.count
+        self.pageControl!.frame = CGRectMake((ScreenWidth - (20 * CGFloat(array!.count)))/2, self.frame.origin.y , 20 * CGFloat(array!.count), 20)
+        self.bringSubviewToFront(self.pageControl!)
+    }
+    
+    func creatTheBestView(model:bestRCollectionViewCellModel,index : Int) -> UIView{
+        
+        var bestView = UIView(frame: CGRectMake(CGFloat(index) * ScreenWidth, 0, ScreenWidth, scrlloView!.frame.size.height))
+        scrlloView?.addSubview(bestView)
+        
+        var image :UIImageView = UIImageView(frame: CGRectMake(20*percent, 10*percent, 100*percent, 80*percent))
+        bestView.addSubview(image)
+        image.loadImageFromURLString(model.url!, placeholderImage: nil) { (finished, error) -> Void in
+        }
+        
+        image.snp_updateConstraints { (make) -> Void in
+            make.left.equalTo(bestView.snp_left).offset(20*percent)
+            make.top.equalTo(bestView.snp_top).offset(10*percent)
+            make.width.equalTo(100*percent)
+            make.height.equalTo(80*percent)
+        }
+        
+        var labelTitle :UILabel = UILabel()
+        labelTitle.text = model.title
+        labelTitle.sizeToFitSize()
+        bestView.addSubview(labelTitle)
+        
+        labelTitle.snp_makeConstraints { (make) -> Void in
+            make.left.equalTo(image.snp_right).offset(20*percent)
+            make.top.equalTo(bestView.snp_top).offset(10*percent)
+        }
+        
+        var labelSu :UILabel = UILabel()
+        labelSu.text = model.des
+        labelSu.textColor = RGBA(153, 153, 153, 1)
+        labelSu.sizeToFitSize()
+        bestView.addSubview(labelSu)
+        
+        labelSu.snp_updateConstraints { (make) -> Void in
+            make.left.equalTo(image.snp_right).offset(20*percent)
+            make.top.equalTo(labelTitle.snp_bottom).offset(3*percent)
+        }
+        
+        var labelNu :UILabel = UILabel()
+        labelNu.text = model.specifications
+        labelNu.textColor = RGBA(153, 153, 153, 1)
+        labelNu.sizeToFitSize()
+        bestView.addSubview(labelNu)
+        
+        labelNu.snp_updateConstraints { (make) -> Void in
+            make.left.equalTo(image.snp_right).offset(20*percent)
+            make.top.equalTo(labelSu.snp_bottom).offset(3*percent)
+        }
+        
+        var chunboPriceLabel : UILabel = UILabel()
+        chunboPriceLabel.text = "¥" + model.chunbo_price!
+        chunboPriceLabel.textColor = model.priceColor()
+        chunboPriceLabel.sizeToFitSize()
+        bestView.addSubview(chunboPriceLabel)
+        
+        chunboPriceLabel.snp_updateConstraints { (make) -> Void in
+            make.left.equalTo(image.snp_right).offset(20*percent)
+            make.top.equalTo(labelNu.snp_bottom).offset(3*percent)
+        }
+        
+        
+        var marketPriceLabel:CustomLineLabel = CustomLineLabel()
+        marketPriceLabel.text = "¥\(model.market_price!)"
+        marketPriceLabel.textColor = RGBA(153, 153, 153, 1)
+        bestView.addSubview(marketPriceLabel)
+        marketPriceLabel.snp_updateConstraints { (make) -> Void in
+            make.left.equalTo(chunboPriceLabel.snp_right).offset(5)
+            make.top.equalTo(labelNu.snp_bottom).offset(3*percent)
+        }
+        if model.market_price?.toInt() == 0{
+            marketPriceLabel.hidden = true
+        }else{
+            marketPriceLabel.hidden = false
+        }
+        
+        
+        var carBtn : cartByButton = cartByButton.ShoppingCart(CGSizeMake(24, 24))
+        bestView.addSubview(carBtn)
+        
+        carBtn.snp_updateConstraints { (make) -> Void in
+            make.left.equalTo(marketPriceLabel.snp_right).offset(15*percent)
+            make.centerY.equalTo(marketPriceLabel.snp_centerY).offset(0)
+        }
+        
+        return bestView
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        
+        self.pageControl!.currentPage = Int(scrollView.contentOffset.x/ScreenWidth)
+        
     }
     
     
